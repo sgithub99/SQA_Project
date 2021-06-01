@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Withdraw</title>
+<title>Calculate Interest</title>
 <link rel="shortcut icon" type="image/png" href="image/favicon.png" />
 <link rel="stylesheet" type="text/css" href="css/deposit.css">
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,61 +20,69 @@
 	</div>
 	<div class="container-fullwidth">
 		<%
-			AccountModel ac = null;
+		AccountModel ac = null;
 		%>
 		<%
-			ac = (AccountModel) session.getAttribute("userDetails");
-			if (ac != null) {
+		ac = (AccountModel) session.getAttribute("userDetails");
+		if (ac != null) {
 		%>
 		<div class="row" style="margin-top: 50px;">
 			<div class="col-md-4 col-md-offset-4">
-				<form role="form" method="post" action="WithdrawServlet">
-					<h2>Withdraw Form</h2>
+				<form role="form" method="post" action="">
+					<h2>Calculate interest Form</h2>
 					<div class="col-md-12">
 						<hr class="colorgraph">
 					</div>
-					<label class="col-md-4 control-label">Account No</label>
+					<label class="col-md-4 control-label">Sending money</label>
 					<div class="col-sm-8 form-group">
-						<input id = "account_no" type="text" required placeholder="Enter Account No.."
-							name="account_no" class="form-control"
-							value="<%=ac.getAccount_no()%>">
+						<input type="text" required placeholder="Enter Sending money.."
+							name="sending_money" class="form-control">
 					</div>
-					<label class="col-md-4 control-label">User Name</label>
+					<label class="col-md-4 control-label">Balance</label>
 					<div class="col-sm-8 form-group">
-						<input id = "username" type="text" required placeholder="Enter User Name.."
-							name="username" class="form-control"
-							value="<%=ac.getUsername()%>">
+						<input type="text" required placeholder="Enter Balance.."
+							name="balance" class="form-control">
 					</div>
 
-					<label class="col-md-4 control-label">Password</label>
+					<label class="col-md-4 control-label">Sending days</label>
 					<div class="col-sm-8 form-group">
-						<input id = "password" type="password" required placeholder="Enter Password.."
-							name="password" class="form-control">
+						<input type="text" required placeholder="Enter sending day..."
+							name="sendingDay" class="form-control">
 					</div>
 
-					<label class="col-md-4 control-label">Amount</label>
+					<label class="col-md-4 control-label">Period</label>
 					<div class="col-sm-8 form-group">
-						<input id = "amount" type="number" placeholder="Enter Amount.."
-							class="form-control" name="amount">
+<!-- 						<input type="number" required placeholder="Enter period"
+							class="form-control" name="period">  -->
+							<select>
+							<option>-----Choose-----</option>
+							<option>1 month</option>
+							<option>2 month</option>
+							<option>3 month</option>
+							<option>6 month</option>
+							<option>12 month</option>
+							<option>24 month</option>
+
+						</select>
 					</div>
 					<div class="col-md-12">
 						<hr class="colorgraph">
 					</div>
 					<%
-						String EnoughMoney = (String) request.getAttribute("EnoughMoney");
-							if (EnoughMoney != null && EnoughMoney.equals("No")) {
+					String EnoughMoney = (String) request.getAttribute("EnoughMoney");
+					if (EnoughMoney != null && EnoughMoney.equals("No")) {
 					%>
 					<div class="col-md-12">
-						<div id = "danger_amount" class="alert alert-danger" role="alert">
-							Sorry! You do not have enough money.
+						<div class="alert alert-danger" role="alert">
+							<strong>Sorry!</strong> You do not have enough money.
 						</div>
 					</div>
 					<%
-						}
+					}
 					%>
 					<%
-						String isPassOK = (String) request.getAttribute("isPassOK");
-							if (isPassOK != null && isPassOK.equals("No")) {
+					String isPassOK = (String) request.getAttribute("isPassOK");
+					if (isPassOK != null && isPassOK.equals("No")) {
 					%>
 					<div class="col-md-12">
 						<div class="alert alert-danger" role="alert">
@@ -82,11 +90,11 @@
 						</div>
 					</div>
 					<%
-						}
+					}
 					%>
 					<div class="row col-md-10 col-md-offset-1">
 						<div class="col-xs-6 col-md-6">
-							<input id = "submit_withdraw" type="submit" value="Submit"
+							<input type="submit" value="Submit"
 								class="btn btn-success btn-block btn-md" tabindex="7">
 						</div>
 						<div class="col-xs-6 col-md-6">
@@ -98,7 +106,7 @@
 			</div>
 		</div>
 		<%
-			} else {
+		} else {
 		%>
 		<div class="row" style="margin-top: 150px;">
 			<div class="alert alert-warning col-md-4 col-md-offset-4"
@@ -108,7 +116,7 @@
 		</div>
 
 		<%
-			}
+		}
 		%>
 
 		<!-- Footer start here -->

@@ -36,7 +36,7 @@
 			<%!AccountModel ac = null;%>
 
 			<%
-				ac = (AccountModel) session.getAttribute("userDetails");
+			ac = (AccountModel) session.getAttribute("userDetails");
 			%>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,15 +44,17 @@
 				<ul class="nav navbar-nav js-nav-add-active-class">
 					<li><a href="index.jsp">Home</a></li>
 					<%
-						if (ac == null) {
+					if (ac == null) {
 					%>
-					<li><a href="create_account.jsp">Create new account</a></li>
+					<li><a href="create_account.jsp">Create open saving
+							account</a></li>
 					<%
-						}
+					}
 					%>
-					<li><a href="create_account.jsp">Open Saving</a></li>
-					<li><a href="withdraw.jsp">Withdraw</a></li>
-	<!--  				<li><a href="deposit.jsp">Deposit</a></li>
+					<!-- 					<li><a href="create_account.jsp">Open Saving</a></li> -->
+					<li id="withdraw_li"><a href="withdraw.jsp">Withdraw</a></li>
+					<li><a href="calculateInterest.jsp">Calculate Interest</a></li>
+					<!--  				<li><a href="deposit.jsp">Deposit</a></li>
 					
 			 		<li><a href="transfer.jsp">Transfer</a></li>
 					<li><a href="close_account.jsp">Close A/C</li>
@@ -75,7 +77,7 @@
 
 
 				<%
-					if (ac != null) {
+				if (ac != null) {
 				%>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -108,17 +110,17 @@
 							</li>
 							<li class="divider navbar-login-session-bg"></li>
 							<%
-								if (ac.getUsername().equals("admin")) {
+							if (ac.getUsername().equals("admin")) {
 							%>
 							<li><a href="loan_request.jsp">Loan request<span
 									class="glyphicon glyphicon-list-alt pull-right"></span></a></li>
 							<%
-								} else {
+							} else {
 							%>
 							<li><a href="change_password.jsp">Change Password<span
 									class="glyphicon glyphicon-cog pull-right"></span></a></li>
 							<%
-								}
+							}
 							%>
 							<li class="divider"></li>
 							<li><a href="logout.jsp">Sign Out<span
@@ -127,14 +129,14 @@
 				</ul>
 				<!-- End User menu -->
 				<%
-					} else {
+				} else {
 				%>
 				<ul class="nav navbar-nav navbar-right hidden-xs">
-					<a type="button" class="navbar-btn btn btn-primary"
+					<a type="button" id="loginHome" class="navbar-btn btn btn-primary"
 						am-latosans="bold" href="login.jsp">Login</a>
 				</ul>
 				<%
-					}
+				}
 				%>
 			</div>
 			<!-- /.navbar-collapse -->

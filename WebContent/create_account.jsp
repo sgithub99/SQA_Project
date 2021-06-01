@@ -21,7 +21,7 @@
 	<div class="container-fullwidth">
 		<div class="row">
 			<div class="account col-md-6 col-md-offset-3">
-				<h1 class="well text-center">Create New Account</h1>
+				<h1 class="well text-center">Create Open Saving Account</h1>
 				<div class="col-lg-12 well">
 					<div class="row">
 						<form action="CreateAccountServlet" method="post">
@@ -29,30 +29,31 @@
 								<div class="row">
 									<div class="col-sm-6 form-group">
 										<label class="required">First Name</label><input type="text"
-											placeholder="Enter First Name Here.." class="form-control"
-											name="first_name" required>
+											placeholder="Enter First Name Here.." id="firstName"
+											class="form-control" name="first_name" required>
 									</div>
 									<div class="col-sm-6 form-group">
 										<label class="required">Last Name</label> <input type="text"
-											placeholder="Enter Last Name Here.." class="form-control"
-											name="last_name" required>
+											placeholder="Enter Last Name Here.." id="lastName"
+											class="form-control" name="last_name" required>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="required">Address</label>
 									<textarea placeholder="Enter Address Here.." rows="3"
-										class="form-control" name="address" required></textarea>
+										class="form-control" name="address" id="address" required></textarea>
 								</div>
 								<div class="row">
 									<div class="col-sm-4 form-group">
 										<label>City</label> <input type="text"
-											placeholder="Enter City Name Here.." class="form-control"
-											name="city">
+											placeholder="Enter City Name Here.." id="city"
+											class="form-control" name="city">
 									</div>
 									<div class="col-sm-4 form-group">
 										<label class="required">Branch Name</label>
 										<div class="input-group-btn">
-											<select class="form-control btn btn-default" name="branch" required>
+											<select class="form-control btn btn-default" id="branchName"
+												name="branch" required>
 												<option>TPBank</option>
 												<option>Vietcombank</option>
 												<option>Agribank</option>
@@ -60,61 +61,64 @@
 												<option>Saocombank</option>
 												<option>VPBank</option>
 												<option>HDBank</option>
-					
 											</select>
 										</div>
 									</div>
 									<div class="col-sm-4 form-group">
 										<label>Zip</label> <input type="text"
-											placeholder="Enter Zip Code Here.." class="form-control"
-											name="zip">
+											placeholder="Enter Zip Code Here.." id="zip"
+											class="form-control" name="zip">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="required">User Name</label> <input type="text"
-										placeholder="Enter User Name Here.." class="form-control"
-										name="username" required>
+										placeholder="Enter User Name Here.." id="username"
+										class="form-control" name="username" required>
+										<h6>${errorusername }</h6>
 								</div>
 								<div class="row">
 									<div class="col-sm-6 form-group">
 										<label class="required">Password</label> <input
-											type="password" required placeholder="Enter Password Here.." min="5"
-											class="form-control" name="password" id="password">
+											type="password" required placeholder="Enter Password Here.."
+											min="5" class="form-control" name="password" id="password">
 									</div>
 									<div class="col-sm-6 form-group">
 										<label class="required">Re-password</label> <input
 											type="password" required
 											placeholder="Enter Re-password Here.." class="form-control"
-											name="re_password" id="re_password">
-											<!-- onkeyup="checkPass(); return false;"> -->
+											name="re_password" id="re_password"
+											onkeyup="checkPass(); return false;">
 										<p id="confirmMessage" style="margin-top: 10x;"></p>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="required">Phone Number</label> <input type="tel"
-										placeholder="Enter Phone Number Here.." class="form-control"
-										name="phone" required>
+										placeholder="Enter Phone Number Here.." id="phone_number"
+										class="form-control" name="phone" required>
 								</div>
 								<div class="form-group">
 									<label class="required">Email Address</label> <input
 										type="text" placeholder="Enter Email Address Here.."
-										class="form-control" name="email" required>
+										class="form-control" id="email" name="email" required>
 								</div>
 								<div class="row">
 									<div class="col-sm-6 form-group">
 										<label class="required">Choose Account type</label>
 										<div class="input-group-btn">
 											<select class="form-control btn btn-default"
-												name="account_type" required>
+												name="account_type" id="account_type" required>
 												<option>Saving Account</option>
 												<option>Current Account</option>
 											</select>
 										</div>
 									</div>
 									<div class="col-sm-6 form-group">
+
 										<label class="required">Amount</label> <input type="number"
-											placeholder="Enter Intial Amount Here.." class="form-control"
-											name="amount" required>
+											placeholder="Enter Intial Amount Here.." id="amount"
+											class="form-control" name="amount" required>
+										<h6 style="color: red">${fail }</h6>
+										<h6 style="color: red">${error }</h6>
 									</div>
 								</div>
 								<div class="form-group">
@@ -123,19 +127,19 @@
 											required field</em> </span>
 								</div>
 								<%
-									String not_match = (String) request.getAttribute("not_match");
-									System.out.println(not_match);
-									if (not_match != null && not_match.equals("yes")) {
+								String not_match = (String) request.getAttribute("not_match");
+								System.out.println(not_match);
+								if (not_match != null && not_match.equals("yes")) {
 								%>
 								<div class="form-group">
 									<p class="bg-danger text-center text-danger"
 										style="font-size: 18px;">Password doesn't match</p>
 								</div>
 								<%
-									}
+								}
 								%>
-								<input type="submit" class="btn btn-lg btn-info">
-								</input>
+								<input id="button_sign_up" type="submit"
+									class="btn btn-lg btn-info" value="Create new saving account" />
 							</div>
 						</form>
 					</div>

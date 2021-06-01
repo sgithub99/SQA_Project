@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.green.bank.model.AccountModel;
 
 public class CreateAccountServlet extends HttpServlet {
-	String account_no, first_name, last_name, address, city, branch, zip, username, password, re_password,
-			phone_number, email, account_type;
+	String account_no, first_name, last_name, address, city, branch, zip, username, password, re_password, phone_number,
+			email, account_type;
 	int amount;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -31,20 +31,36 @@ public class CreateAccountServlet extends HttpServlet {
 		branch = request.getParameter("branch");
 		zip = request.getParameter("zip");
 		username = request.getParameter("username");
+		
+		if(username.contains(" ")) {
+			request.setAttribute("errorusername", "Username must not have spaces");
+			request.getRequestDispatcher("create_account.jsp").forward(request, response);
+		} else {
+			username = request.getParameter("username");
+		}
+		
 		password = request.getParameter("password");
 		re_password = request.getParameter("re_password");
 		phone_number = request.getParameter("phone");
 		email = request.getParameter("email");
 		account_type = request.getParameter("account_type");
-		amount = Integer.parseInt(request.getParameter("amount"));
-
+		if (amount < 100000) {
+			request.setAttribute("fail", "Amount must greater than 1M");
+			request.getRequestDispatcher("create_account.jsp").forward(request, response);
+			amount = Integer.parseInt(request.getParameter("amount"));
+		} else {
+			if (amount % 100000 != 0) {
+				request.setAttribute("error", "The amount must be even hundred thousand");
+				request.getRequestDispatcher("create_account.jsp").forward(request, response);
+			} else {
+				amount = Integer.parseInt(request.getParameter("amount"));
+			}
+		}
 		// Generating account number
-		Random rand = new Random();
-		int random_num = 100000 + rand.nextInt(999999);
-		account_no = username ;
+		account_no = username;
 		System.out.println(account_no);
-		
-		//Getting Current date
+
+		// Getting Current date
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		String reg_date = df.format(new Date());
 

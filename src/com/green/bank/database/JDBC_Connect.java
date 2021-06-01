@@ -16,7 +16,6 @@ public class JDBC_Connect {
 
 			System.out.println("Where is your JDBC Driver?");
 			e.printStackTrace();
-
 		}
 
 		return connection;

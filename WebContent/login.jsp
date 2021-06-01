@@ -42,16 +42,17 @@
 								</label>
 							</div>
 							<%
-							    String isPassOK = (String) request.getAttribute("isPassOK");
-								if (isPassOK!=null && isPassOK.equals("No")) {
+							String isPassOK = (String) request.getAttribute("isPassOK");
+							if (isPassOK != null && isPassOK.equals("No")) {
 							%>
 							<div class="alert alert-danger" role="alert">
 								<strong>Account No/Password doesn't match.</strong>
 							</div>
 							<%
-								}
+							}
 							%>
-							<input type="submit" class="btn btn-primary btn-lg"
+							<input id="sign_in_button" type="submit"
+								class="btn btn-primary btn-lg"
 								value="Sign
 								to your account"></input>
 						</form>

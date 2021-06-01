@@ -4,6 +4,32 @@ public class AccountModel {
 	String account_no, first_name, last_name, address, city, branch, zip, username, password, phone_number, email,
 			account_type, reg_date;
 	int amount;
+	
+	
+	public AccountModel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public AccountModel(String account_no, String first_name, String last_name, String address, String city,
+			String branch, String zip, String username, String password, String phone_number, String email,
+			String account_type, String reg_date, int amount) {
+		super();
+		this.account_no = account_no;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.address = address;
+		this.city = city;
+		this.branch = branch;
+		this.zip = zip;
+		this.username = username;
+		this.password = password;
+		this.phone_number = phone_number;
+		this.email = email;
+		this.account_type = account_type;
+		this.reg_date = reg_date;
+		this.amount = amount;
+	}
 
 	public String getAccount_no() {
 		return account_no;

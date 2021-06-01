@@ -55,7 +55,7 @@ public class WithdrawServlet extends HttpServlet {
 					System.out.println(current_amount);
 				}
 
-				if (current_amount >= withdraw_amount) {
+				if (current_amount >= withdraw_amount && withdraw_amount > 0) {
 					current_amount -= withdraw_amount;
 
 					PreparedStatement ps = conn.prepareStatement("update amount set amount=? where id= ?");
